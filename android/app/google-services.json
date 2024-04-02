@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "681539890264",
+    "project_id": "kisaan24-renxl7",
+    "storage_bucket": "kisaan24-renxl7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681539890264:android:bc99f18629a64317e72e2d",
+        "android_client_info": {
+          "package_name": "com.scompany.kisaan24"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681539890264-ih8q6d0gpck7st6tf0johdlg6m4kth3b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.scompany.kisaan24",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "681539890264-o8ki89d87n7ofbou88htd37kkjajn2r5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyaVlDWVhsG3gcLyqGM1SkiwjWE0KI2-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681539890264-o8ki89d87n7ofbou88htd37kkjajn2r5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "681539890264-fsa796c57aunistva8jfrcbcep3daf2u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.scompany.kisaan24"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
