@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/cart_order_history/cart_product/cart_product_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'cart_order_details_model.dart';
 export 'cart_order_details_model.dart';
 
@@ -32,6 +33,8 @@ class _CartOrderDetailsWidgetState extends State<CartOrderDetailsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CartOrderDetailsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -67,12 +70,18 @@ class _CartOrderDetailsWidgetState extends State<CartOrderDetailsWidget> {
               context.pop();
             },
           ),
-          title: Text(
+          title: GradientText(
             'Order Details',
             style: FlutterFlowTheme.of(context).bodyLarge.override(
                   fontFamily: 'Plus Jakarta Sans',
                   letterSpacing: 0.0,
                 ),
+            colors: [
+              FlutterFlowTheme.of(context).primary,
+              FlutterFlowTheme.of(context).secondary
+            ],
+            gradientDirection: GradientDirection.ltr,
+            gradientType: GradientType.linear,
           ),
           actions: const [],
           centerTitle: false,
@@ -510,75 +519,15 @@ class _CartOrderDetailsWidgetState extends State<CartOrderDetailsWidget> {
                                                               ),
                                                         ),
                                                         Text(
-                                                          formatNumber(
-                                                            (valueOrDefault<
-                                                                    double>(
-                                                                  widget
-                                                                      .orderRef
-                                                                      ?.totalPrice,
-                                                                  0.0,
-                                                                ) -
-                                                                valueOrDefault<
-                                                                    double>(
-                                                                  widget
-                                                                      .orderRef
-                                                                      ?.tax,
-                                                                  0.0,
-                                                                )),
-                                                            formatType:
-                                                                FormatType
-                                                                    .decimal,
-                                                            decimalType:
-                                                                DecimalType
-                                                                    .automatic,
-                                                            currency: '₹',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 8.0,
-                                                                0.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Text(
-                                                          'Tax',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
-                                                        ),
-                                                        Text(
                                                           valueOrDefault<
                                                               String>(
                                                             formatNumber(
-                                                              widget.orderRef
-                                                                  ?.tax,
+                                                              (valueOrDefault<
+                                                                  double>(
+                                                                widget.orderRef
+                                                                    ?.totalPrice,
+                                                                0.0,
+                                                              )),
                                                               formatType:
                                                                   FormatType
                                                                       .decimal,

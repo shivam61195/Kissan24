@@ -40,11 +40,6 @@ class ProductsRecord extends FirestoreRecord {
   DateTime? get createdTime => _createdTime;
   bool hasCreatedTime() => _createdTime != null;
 
-  // "price" field.
-  double? _price;
-  double get price => _price ?? 0.0;
-  bool hasPrice() => _price != null;
-
   // "salePrice" field.
   double? _salePrice;
   double get salePrice => _salePrice ?? 0.0;
@@ -71,7 +66,6 @@ class ProductsRecord extends FirestoreRecord {
     _name = snapshotData['name'] as String?;
     _description = snapshotData['description'] as String?;
     _createdTime = snapshotData['createdTime'] as DateTime?;
-    _price = castToType<double>(snapshotData['price']);
     _salePrice = castToType<double>(snapshotData['salePrice']);
     _owner = snapshotData['owner'] as DocumentReference?;
     _tags = getDataList(snapshotData['tags']);
@@ -117,7 +111,6 @@ Map<String, dynamic> createProductsRecordData({
   String? name,
   String? description,
   DateTime? createdTime,
-  double? price,
   double? salePrice,
   DocumentReference? owner,
   String? category,
@@ -128,7 +121,6 @@ Map<String, dynamic> createProductsRecordData({
       'name': name,
       'description': description,
       'createdTime': createdTime,
-      'price': price,
       'salePrice': salePrice,
       'owner': owner,
       'category': category,
@@ -149,7 +141,6 @@ class ProductsRecordDocumentEquality implements Equality<ProductsRecord> {
         e1?.name == e2?.name &&
         e1?.description == e2?.description &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.price == e2?.price &&
         e1?.salePrice == e2?.salePrice &&
         e1?.owner == e2?.owner &&
         listEquality.equals(e1?.tags, e2?.tags) &&
@@ -163,7 +154,6 @@ class ProductsRecordDocumentEquality implements Equality<ProductsRecord> {
         e?.name,
         e?.description,
         e?.createdTime,
-        e?.price,
         e?.salePrice,
         e?.owner,
         e?.tags,

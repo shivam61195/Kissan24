@@ -42,6 +42,8 @@ class _EmptyStateDynamicWidgetState extends State<EmptyStateDynamicWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EmptyStateDynamicModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'cart_success_page_model.dart';
 export 'cart_success_page_model.dart';
 
@@ -190,6 +191,8 @@ class _CartSuccessPageWidgetState extends State<CartSuccessPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => CartSuccessPageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -268,7 +271,7 @@ class _CartSuccessPageWidgetState extends State<CartSuccessPageWidget>
                       Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                        child: Text(
+                        child: GradientText(
                           'Order Placed',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context)
@@ -278,13 +281,19 @@ class _CartSuccessPageWidgetState extends State<CartSuccessPageWidget>
                                 color: FlutterFlowTheme.of(context).primary,
                                 letterSpacing: 0.0,
                               ),
+                          colors: [
+                            FlutterFlowTheme.of(context).primary,
+                            FlutterFlowTheme.of(context).secondary
+                          ],
+                          gradientDirection: GradientDirection.ltr,
+                          gradientType: GradientType.linear,
                         ).animateOnPageLoad(
                             animationsMap['textOnPageLoadAnimation1']!),
                       ),
                       Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                        child: Text(
+                        child: GradientText(
                           'Successfully!',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context)
@@ -293,6 +302,12 @@ class _CartSuccessPageWidgetState extends State<CartSuccessPageWidget>
                                 fontFamily: 'Urbanist',
                                 letterSpacing: 0.0,
                               ),
+                          colors: [
+                            FlutterFlowTheme.of(context).primary,
+                            FlutterFlowTheme.of(context).secondary
+                          ],
+                          gradientDirection: GradientDirection.ltr,
+                          gradientType: GradientType.linear,
                         ).animateOnPageLoad(
                             animationsMap['textOnPageLoadAnimation2']!),
                       ),

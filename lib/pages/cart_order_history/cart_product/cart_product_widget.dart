@@ -35,6 +35,8 @@ class _CartProductWidgetState extends State<CartProductWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CartProductModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -131,31 +133,6 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                                       letterSpacing: 0.0,
                                     ),
                               ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: RichText(
-                                  textScaler: MediaQuery.of(context).textScaler,
-                                  text: TextSpan(
-                                    children: const [
-                                      TextSpan(
-                                        text: 'Size: ',
-                                        style: TextStyle(),
-                                      ),
-                                      TextSpan(
-                                        text: '12',
-                                        style: TextStyle(),
-                                      )
-                                    ],
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelSmall
-                                        .override(
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ),
-                              ),
                             ],
                           ),
                         ),
@@ -166,7 +143,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                         child: Text(
                           valueOrDefault<String>(
                             formatNumber(
-                              menuItemProductsRecord.price,
+                              menuItemProductsRecord.salePrice,
                               formatType: FormatType.decimal,
                               decimalType: DecimalType.automatic,
                               currency: '₹',
@@ -231,7 +208,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                             FFAppState().update(() {
                               FFAppState().removeFromMyCart(widget.product!);
                               FFAppState().removeFromMyCartSummary(
-                                  menuItemProductsRecord.price);
+                                  menuItemProductsRecord.salePrice);
                             });
                           },
                         ),

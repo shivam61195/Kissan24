@@ -2,10 +2,12 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/bottomnavigationcomponents/bottomnavigationcomponents_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:easy_debounce/easy_debounce.dart';
@@ -132,14 +134,8 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
     _model.cityController ??= TextEditingController();
     _model.cityFocusNode ??= FocusNode();
 
-    _model.stateController ??= TextEditingController();
-    _model.stateFocusNode ??= FocusNode();
-
     _model.zipController ??= TextEditingController();
     _model.zipFocusNode ??= FocusNode();
-
-    _model.zipCodeMobileController ??= TextEditingController();
-    _model.zipCodeMobileFocusNode ??= FocusNode();
 
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -147,6 +143,8 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -650,7 +648,6 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                                     letterSpacing:
                                                                         0.0,
                                                                   ),
-                                                              minLines: null,
                                                               cursorColor:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -790,7 +787,6 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                                     letterSpacing:
                                                                         0.0,
                                                                   ),
-                                                              minLines: null,
                                                               cursorColor:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -927,8 +923,6 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                                           letterSpacing:
                                                                               0.0,
                                                                         ),
-                                                                    minLines:
-                                                                        null,
                                                                     cursorColor:
                                                                         FlutterFlowTheme.of(context)
                                                                             .primary,
@@ -949,126 +943,69 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                                           0.0,
                                                                           12.0),
                                                                   child:
-                                                                      TextFormField(
-                                                                    controller:
-                                                                        _model
-                                                                            .stateController,
-                                                                    focusNode:
-                                                                        _model
-                                                                            .stateFocusNode,
-                                                                    autofocus:
-                                                                        false,
-                                                                    obscureText:
-                                                                        false,
-                                                                    decoration:
-                                                                        InputDecoration(
-                                                                      labelText:
-                                                                          'State',
-                                                                      labelStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelLarge
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Plus Jakarta Sans',
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                          ),
-                                                                      hintStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelLarge
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Plus Jakarta Sans',
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                          ),
-                                                                      enabledBorder:
-                                                                          UnderlineInputBorder(
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).alternate,
-                                                                          width:
-                                                                              2.0,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            const BorderRadius.only(
-                                                                          topLeft:
-                                                                              Radius.circular(4.0),
-                                                                          topRight:
-                                                                              Radius.circular(4.0),
-                                                                        ),
-                                                                      ),
-                                                                      focusedBorder:
-                                                                          UnderlineInputBorder(
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                          width:
-                                                                              2.0,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            const BorderRadius.only(
-                                                                          topLeft:
-                                                                              Radius.circular(4.0),
-                                                                          topRight:
-                                                                              Radius.circular(4.0),
-                                                                        ),
-                                                                      ),
-                                                                      errorBorder:
-                                                                          UnderlineInputBorder(
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).error,
-                                                                          width:
-                                                                              2.0,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            const BorderRadius.only(
-                                                                          topLeft:
-                                                                              Radius.circular(4.0),
-                                                                          topRight:
-                                                                              Radius.circular(4.0),
-                                                                        ),
-                                                                      ),
-                                                                      focusedErrorBorder:
-                                                                          UnderlineInputBorder(
-                                                                        borderSide:
-                                                                            BorderSide(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).error,
-                                                                          width:
-                                                                              2.0,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            const BorderRadius.only(
-                                                                          topLeft:
-                                                                              Radius.circular(4.0),
-                                                                          topRight:
-                                                                              Radius.circular(4.0),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
+                                                                      FlutterFlowDropDown<
+                                                                          String>(
+                                                                    controller: _model
+                                                                        .stateValueController ??= FormFieldController<
+                                                                            String>(
+                                                                        null),
+                                                                    options: const [
+                                                                      'Haryana'
+                                                                    ],
+                                                                    onChanged: (val) =>
+                                                                        setState(() =>
+                                                                            _model.stateValue =
+                                                                                val),
+                                                                    width:
+                                                                        300.0,
+                                                                    height:
+                                                                        56.0,
+                                                                    textStyle: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyLarge
+                                                                        .bodyMedium
                                                                         .override(
                                                                           fontFamily:
                                                                               'Plus Jakarta Sans',
                                                                           letterSpacing:
                                                                               0.0,
                                                                         ),
-                                                                    minLines:
-                                                                        null,
-                                                                    cursorColor:
+                                                                    hintText:
+                                                                        'State',
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .keyboard_arrow_down_rounded,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                    fillColor: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                    elevation:
+                                                                        2.0,
+                                                                    borderColor:
                                                                         FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                    validator: _model
-                                                                        .stateControllerValidator
-                                                                        .asValidator(
-                                                                            context),
+                                                                            .alternate,
+                                                                    borderWidth:
+                                                                        2.0,
+                                                                    borderRadius:
+                                                                        8.0,
+                                                                    margin: const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            16.0,
+                                                                            4.0,
+                                                                            16.0,
+                                                                            4.0),
+                                                                    hidesUnderline:
+                                                                        true,
+                                                                    isOverButton:
+                                                                        true,
+                                                                    isSearchable:
+                                                                        false,
+                                                                    isMultiSelect:
+                                                                        false,
                                                                   ),
                                                                 ),
                                                               ),
@@ -1118,7 +1055,7 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                                       decoration:
                                                                           InputDecoration(
                                                                         labelText:
-                                                                            'Zip Code',
+                                                                            'Pin Code',
                                                                         labelStyle: FlutterFlowTheme.of(context)
                                                                             .labelLarge
                                                                             .override(
@@ -1209,8 +1146,6 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                                             letterSpacing:
                                                                                 0.0,
                                                                           ),
-                                                                      minLines:
-                                                                          null,
                                                                       cursorColor:
                                                                           FlutterFlowTheme.of(context)
                                                                               .primary,
@@ -1238,149 +1173,67 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                                           0.0,
                                                                           12.0),
                                                               child:
-                                                                  TextFormField(
+                                                                  FlutterFlowDropDown<
+                                                                      String>(
                                                                 controller: _model
-                                                                    .zipCodeMobileController,
-                                                                focusNode: _model
-                                                                    .zipCodeMobileFocusNode,
-                                                                onFieldSubmitted:
-                                                                    (_) async {
-                                                                  setState(() {
-                                                                    _model.zipCode =
-                                                                        _model
-                                                                            .zipCodeMobileController
-                                                                            .text;
-                                                                  });
-                                                                },
-                                                                autofocus:
-                                                                    false,
-                                                                obscureText:
-                                                                    false,
-                                                                decoration:
-                                                                    InputDecoration(
-                                                                  labelText:
-                                                                      'Zip Code',
-                                                                  labelStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLarge
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                                  hintStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLarge
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                                  enabledBorder:
-                                                                      UnderlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .alternate,
-                                                                      width:
-                                                                          2.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        const BorderRadius
-                                                                            .only(
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              4.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              4.0),
-                                                                    ),
-                                                                  ),
-                                                                  focusedBorder:
-                                                                      UnderlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      width:
-                                                                          2.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        const BorderRadius
-                                                                            .only(
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              4.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              4.0),
-                                                                    ),
-                                                                  ),
-                                                                  errorBorder:
-                                                                      UnderlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .error,
-                                                                      width:
-                                                                          2.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        const BorderRadius
-                                                                            .only(
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              4.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              4.0),
-                                                                    ),
-                                                                  ),
-                                                                  focusedErrorBorder:
-                                                                      UnderlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .error,
-                                                                      width:
-                                                                          2.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        const BorderRadius
-                                                                            .only(
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              4.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              4.0),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
+                                                                        .zipCodeMobileValueController ??=
+                                                                    FormFieldController<
+                                                                            String>(
+                                                                        null),
+                                                                options: const [
+                                                                  '125113'
+                                                                ],
+                                                                onChanged: (val) =>
+                                                                    setState(() =>
+                                                                        _model.zipCodeMobileValue =
+                                                                            val),
+                                                                width: 352.0,
+                                                                height: 56.0,
+                                                                textStyle: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyLarge
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Plus Jakarta Sans',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
-                                                                minLines: null,
-                                                                cursorColor:
+                                                                hintText:
+                                                                    'Pin Code',
+                                                                icon: Icon(
+                                                                  Icons
+                                                                      .keyboard_arrow_down_rounded,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  size: 24.0,
+                                                                ),
+                                                                fillColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                elevation: 2.0,
+                                                                borderColor:
                                                                     FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primary,
-                                                                validator: _model
-                                                                    .zipCodeMobileControllerValidator
-                                                                    .asValidator(
-                                                                        context),
+                                                                        .alternate,
+                                                                borderWidth:
+                                                                    2.0,
+                                                                borderRadius:
+                                                                    8.0,
+                                                                margin: const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16.0,
+                                                                        4.0,
+                                                                        16.0,
+                                                                        4.0),
+                                                                hidesUnderline:
+                                                                    true,
+                                                                isOverButton:
+                                                                    true,
+                                                                isSearchable:
+                                                                    false,
+                                                                isMultiSelect:
+                                                                    false,
                                                               ),
                                                             ),
                                                           Padding(
@@ -1425,7 +1278,7 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                                                   streetAddress: _model.addressController.text,
                                                                                   streetAddress2: _model.streetAddress2Controller.text,
                                                                                   city: _model.cityController.text,
-                                                                                  state: _model.stateController.text,
+                                                                                  state: _model.stateValue,
                                                                                   postalCode: _model.zipCode,
                                                                                 ),
                                                                                 clearUnsetFields: false,
@@ -1448,13 +1301,7 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                                           .cityController
                                                                           ?.clear();
                                                                       _model
-                                                                          .stateController
-                                                                          ?.clear();
-                                                                      _model
                                                                           .zipController
-                                                                          ?.clear();
-                                                                      _model
-                                                                          .zipCodeMobileController
                                                                           ?.clear();
                                                                     });
                                                                     // addNewAddressToSelected
@@ -1475,8 +1322,7 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                                             .cityController
                                                                             .text,
                                                                         state: _model
-                                                                            .stateController
-                                                                            .text,
+                                                                            .stateValue,
                                                                         postalCode:
                                                                             _model.zipCode,
                                                                       );
@@ -1936,60 +1782,6 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                'Taxes',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                              ),
-                                              Text(
-                                                formatNumber(
-                                                  (valueOrDefault<double>(
-                                                        functions.priceSummary(
-                                                            FFAppState()
-                                                                .myCartSummary
-                                                                .toList()),
-                                                        0.0,
-                                                      ) *
-                                                      0.0825),
-                                                  formatType:
-                                                      FormatType.decimal,
-                                                  decimalType:
-                                                      DecimalType.automatic,
-                                                  currency: '₹',
-                                                ),
-                                                textAlign: TextAlign.end,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 8.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
                                                 'Fees',
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2070,29 +1862,23 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                 ],
                                               ),
                                               Text(
-                                                formatNumber(
-                                                  (valueOrDefault<double>(
-                                                            functions.priceSummary(
-                                                                FFAppState()
-                                                                    .myCartSummary
-                                                                    .toList()),
-                                                            0.0,
-                                                          ) +
-                                                          (valueOrDefault<
-                                                                  double>(
-                                                                functions.priceSummary(
-                                                                    FFAppState()
-                                                                        .myCartSummary
-                                                                        .toList()),
-                                                                0.0,
-                                                              ) *
-                                                              0.0825)) +
-                                                      4.00,
-                                                  formatType:
-                                                      FormatType.decimal,
-                                                  decimalType:
-                                                      DecimalType.automatic,
-                                                  currency: '₹',
+                                                valueOrDefault<String>(
+                                                  formatNumber(
+                                                    (valueOrDefault<double>(
+                                                          functions.priceSummary(
+                                                              FFAppState()
+                                                                  .myCartSummary
+                                                                  .toList()),
+                                                          0.0,
+                                                        )) +
+                                                        4.00,
+                                                    formatType:
+                                                        FormatType.decimal,
+                                                    decimalType:
+                                                        DecimalType.automatic,
+                                                    currency: '₹',
+                                                  ),
+                                                  '0',
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2111,6 +1897,7 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                   ),
                                   FFButtonWidget(
                                     onPressed: () async {
+                                      var shouldSetState = false;
                                       if (_model.selectedAddress != null) {
                                         // Create Order
 
@@ -2207,24 +1994,14 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                             },
                                           ),
                                         }, ordersRecordReference);
+                                        shouldSetState = true;
                                         // clearCartPriceItems
                                         FFAppState().update(() {
                                           FFAppState().myCart = [];
                                           FFAppState().myCartSummary = [];
                                         });
 
-                                        context.goNamed(
-                                          'cart_successPage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .bottomToTop,
-                                              duration:
-                                                  Duration(milliseconds: 300),
-                                            ),
-                                          },
-                                        );
+                                        context.pushNamed('cart_successPage');
                                       } else {
                                         // showErrorMessage
                                         ScaffoldMessenger.of(context)
@@ -2252,9 +2029,11 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                                     .tertiary,
                                           ),
                                         );
+                                        if (shouldSetState) setState(() {});
+                                        return;
                                       }
 
-                                      setState(() {});
+                                      if (shouldSetState) setState(() {});
                                     },
                                     text: 'Checkout Now',
                                     options: FFButtonOptions(

@@ -26,6 +26,8 @@ class _ForgetpassWidgetState extends State<ForgetpassWidget> {
 
     _model.emailAddressController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -210,7 +212,6 @@ class _ForgetpassWidgetState extends State<ForgetpassWidget> {
                           letterSpacing: 0.0,
                         ),
                     maxLines: null,
-                    minLines: null,
                     keyboardType: TextInputType.emailAddress,
                     cursorColor: FlutterFlowTheme.of(context).primary,
                     validator: _model.emailAddressControllerValidator

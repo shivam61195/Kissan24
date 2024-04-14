@@ -20,6 +20,19 @@ class Auth1Model extends FlutterFlowModel<Auth1Widget> {
   TextEditingController? passwordController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordControllerValidator;
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
+
+  // State field(s) for Name_Create widget.
+  FocusNode? nameCreateFocusNode;
+  TextEditingController? nameCreateController;
+  String? Function(BuildContext, String?)? nameCreateControllerValidator;
+  // State field(s) for Phoneno_Create widget.
+  FocusNode? phonenoCreateFocusNode;
+  TextEditingController? phonenoCreateController;
+  String? Function(BuildContext, String?)? phonenoCreateControllerValidator;
   // State field(s) for emailAddress_Create widget.
   FocusNode? emailAddressCreateFocusNode;
   TextEditingController? emailAddressCreateController;
@@ -52,6 +65,12 @@ class Auth1Model extends FlutterFlowModel<Auth1Widget> {
 
     passwordFocusNode?.dispose();
     passwordController?.dispose();
+
+    nameCreateFocusNode?.dispose();
+    nameCreateController?.dispose();
+
+    phonenoCreateFocusNode?.dispose();
+    phonenoCreateController?.dispose();
 
     emailAddressCreateFocusNode?.dispose();
     emailAddressCreateController?.dispose();

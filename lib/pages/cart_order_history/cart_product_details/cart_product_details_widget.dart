@@ -360,6 +360,8 @@ class _CartProductDetailsWidgetState extends State<CartProductDetailsWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => CartProductDetailsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -487,7 +489,7 @@ class _CartProductDetailsWidgetState extends State<CartProductDetailsWidget>
                                           child: Text(
                                             valueOrDefault<String>(
                                               formatNumber(
-                                                widget.productRef?.price,
+                                                widget.productRef?.salePrice,
                                                 formatType: FormatType.decimal,
                                                 decimalType:
                                                     DecimalType.automatic,
@@ -916,7 +918,7 @@ class _CartProductDetailsWidgetState extends State<CartProductDetailsWidget>
                                           FFAppState().addToMyCart(
                                               widget.productRef!.reference);
                                           FFAppState().addToMyCartSummary(
-                                              widget.productRef!.price);
+                                              widget.productRef!.salePrice);
                                         });
                                         // showMessage
                                         ScaffoldMessenger.of(context)
@@ -1187,8 +1189,8 @@ class _CartProductDetailsWidgetState extends State<CartProductDetailsWidget>
                                                   child: Text(
                                                     valueOrDefault<String>(
                                                       formatNumber(
-                                                        widget
-                                                            .productRef?.price,
+                                                        widget.productRef
+                                                            ?.salePrice,
                                                         formatType:
                                                             FormatType.decimal,
                                                         decimalType: DecimalType
@@ -1649,7 +1651,7 @@ class _CartProductDetailsWidgetState extends State<CartProductDetailsWidget>
                                                       FFAppState()
                                                           .addToMyCartSummary(
                                                               widget.productRef!
-                                                                  .price);
+                                                                  .salePrice);
                                                     });
                                                     // showMessage
                                                     ScaffoldMessenger.of(

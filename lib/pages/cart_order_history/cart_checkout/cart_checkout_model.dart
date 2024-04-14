@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/components/bottomnavigationcomponents/bottomnavigationcomponents_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'cart_checkout_widget.dart' show CartCheckoutWidget;
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -53,25 +54,15 @@ class CartCheckoutModel extends FlutterFlowModel<CartCheckoutWidget> {
   }
 
   // State field(s) for state widget.
-  FocusNode? stateFocusNode;
-  TextEditingController? stateController;
-  String? Function(BuildContext, String?)? stateControllerValidator;
-  String? _stateControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Choose a state';
-    }
-
-    return null;
-  }
-
+  String? stateValue;
+  FormFieldController<String>? stateValueController;
   // State field(s) for zip widget.
   FocusNode? zipFocusNode;
   TextEditingController? zipController;
   String? Function(BuildContext, String?)? zipControllerValidator;
   // State field(s) for zipCodeMobile widget.
-  FocusNode? zipCodeMobileFocusNode;
-  TextEditingController? zipCodeMobileController;
-  String? Function(BuildContext, String?)? zipCodeMobileControllerValidator;
+  String? zipCodeMobileValue;
+  FormFieldController<String>? zipCodeMobileValueController;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   OrdersRecord? newOrder;
   // Model for bottomnavigationcomponents component.
@@ -81,7 +72,6 @@ class CartCheckoutModel extends FlutterFlowModel<CartCheckoutWidget> {
   void initState(BuildContext context) {
     addressControllerValidator = _addressControllerValidator;
     cityControllerValidator = _cityControllerValidator;
-    stateControllerValidator = _stateControllerValidator;
     bottomnavigationcomponentsModel =
         createModel(context, () => BottomnavigationcomponentsModel());
   }
@@ -98,14 +88,8 @@ class CartCheckoutModel extends FlutterFlowModel<CartCheckoutWidget> {
     cityFocusNode?.dispose();
     cityController?.dispose();
 
-    stateFocusNode?.dispose();
-    stateController?.dispose();
-
     zipFocusNode?.dispose();
     zipController?.dispose();
-
-    zipCodeMobileFocusNode?.dispose();
-    zipCodeMobileController?.dispose();
 
     bottomnavigationcomponentsModel.dispose();
   }

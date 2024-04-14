@@ -7,7 +7,6 @@ import '/backend/backend.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -97,9 +96,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const ForgetpassWidget(),
         ),
         FFRoute(
-          name: 'cart_ProductList',
-          path: '/cartProductList',
-          builder: (context, params) => const CartProductListWidget(),
+          name: 'ProductList_Seeds',
+          path: '/productListSeeds',
+          builder: (context, params) => const ProductListSeedsWidget(),
         ),
         FFRoute(
           name: 'cart_ProductDetails',
@@ -156,6 +155,94 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'SearchPage',
           path: '/searchPage',
           builder: (context, params) => const SearchPageWidget(),
+        ),
+        FFRoute(
+          name: 'ProductList_Herbicide',
+          path: '/productListHerbicide',
+          builder: (context, params) => const ProductListHerbicideWidget(),
+        ),
+        FFRoute(
+          name: 'ProductList_Insecticide',
+          path: '/productListInsecticide',
+          builder: (context, params) => const ProductListInsecticideWidget(),
+        ),
+        FFRoute(
+          name: 'ProductList_Fungicide',
+          path: '/productListFungicide',
+          builder: (context, params) => const ProductListFungicideWidget(),
+        ),
+        FFRoute(
+          name: 'ProductList_Growth',
+          path: '/productListGrowth',
+          builder: (context, params) => const ProductListGrowthWidget(),
+        ),
+        FFRoute(
+          name: 'ProductList_All',
+          path: '/productListAll',
+          builder: (context, params) => const ProductListAllWidget(),
+        ),
+        FFRoute(
+          name: 'Adminprofile',
+          path: '/adminprofile',
+          builder: (context, params) => const AdminprofileWidget(),
+        ),
+        FFRoute(
+          name: 'AdminCreate_Product',
+          path: '/adminCreateProduct',
+          builder: (context, params) => const AdminCreateProductWidget(),
+        ),
+        FFRoute(
+          name: 'RecentOrder',
+          path: '/recentOrder',
+          builder: (context, params) => const RecentOrderWidget(),
+        ),
+        FFRoute(
+          name: 'Admin_orderDetail',
+          path: '/adminOrderDetail',
+          asyncParams: {
+            'orderRef': getDoc(['orders'], OrdersRecord.fromSnapshot),
+          },
+          builder: (context, params) => AdminOrderDetailWidget(
+            orderRef: params.getParam(
+              'orderRef',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'products_admin',
+          path: '/productsAdmin',
+          builder: (context, params) => const ProductsAdminWidget(),
+        ),
+        FFRoute(
+          name: 'TermsAndPolicies',
+          path: '/termsAndPolicies',
+          builder: (context, params) => const TermsAndPoliciesWidget(),
+        ),
+        FFRoute(
+          name: 'ShippingPolicy',
+          path: '/shippingPolicy',
+          builder: (context, params) => const ShippingPolicyWidget(),
+        ),
+        FFRoute(
+          name: 'RefundandReturnPolicy',
+          path: '/refundandReturnPolicy',
+          builder: (context, params) => const RefundandReturnPolicyWidget(),
+        ),
+        FFRoute(
+          name: 'TermsandConditions',
+          path: '/termsandConditions',
+          builder: (context, params) => const TermsandConditionsWidget(),
+        ),
+        FFRoute(
+          name: 'PrivacyPolicy',
+          path: '/privacyPolicy',
+          builder: (context, params) => const PrivacyPolicyWidget(),
+        ),
+        FFRoute(
+          name: 'SupportPage',
+          path: '/supportPage',
+          builder: (context, params) => const SupportPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -342,14 +429,13 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
+              ? Container(
+                  color: const Color(0xFFFCFCFE),
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/WhatsApp_Image_2024-04-06_at_11.31.51_PM.jpeg',
+                      width: 200.0,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 )

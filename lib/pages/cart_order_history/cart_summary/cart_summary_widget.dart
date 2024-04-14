@@ -5,6 +5,7 @@ import '/pages/cart_order_history/cart_product/cart_product_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'cart_summary_model.dart';
 export 'cart_summary_model.dart';
 
@@ -33,6 +34,8 @@ class _CartSummaryWidgetState extends State<CartSummaryWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CartSummaryModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -70,12 +73,18 @@ class _CartSummaryWidgetState extends State<CartSummaryWidget> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            GradientText(
               'Your Cart',
               style: FlutterFlowTheme.of(context).headlineSmall.override(
                     fontFamily: 'Urbanist',
                     letterSpacing: 0.0,
                   ),
+              colors: [
+                FlutterFlowTheme.of(context).primary,
+                FlutterFlowTheme.of(context).secondary
+              ],
+              gradientDirection: GradientDirection.ltr,
+              gradientType: GradientType.linear,
             ),
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 12.0),

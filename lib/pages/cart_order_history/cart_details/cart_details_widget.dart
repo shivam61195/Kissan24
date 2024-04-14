@@ -26,6 +26,8 @@ class _CartDetailsWidgetState extends State<CartDetailsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CartDetailsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -309,60 +311,6 @@ class _CartDetailsWidgetState extends State<CartDetailsWidget> {
                                                 ],
                                               ),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 8.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    'Taxes',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                                  ),
-                                                  Text(
-                                                    formatNumber(
-                                                      (valueOrDefault<double>(
-                                                            functions.priceSummary(
-                                                                FFAppState()
-                                                                    .myCartSummary
-                                                                    .toList()),
-                                                            0.0,
-                                                          ) *
-                                                          0.0825),
-                                                      formatType:
-                                                          FormatType.decimal,
-                                                      decimalType:
-                                                          DecimalType.automatic,
-                                                      currency: '₹',
-                                                    ),
-                                                    textAlign: TextAlign.end,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
                                             if (FFAppState().myCart.isNotEmpty)
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
@@ -470,18 +418,12 @@ class _CartDetailsWidgetState extends State<CartDetailsWidget> {
                                                                   .myCart.isNotEmpty
                                                           ? formatNumber(
                                                               (valueOrDefault<
-                                                                          double>(
-                                                                        functions.priceSummary(FFAppState()
-                                                                            .myCartSummary
-                                                                            .toList()),
-                                                                        0.0,
-                                                                      ) +
-                                                                      (valueOrDefault<
-                                                                              double>(
-                                                                            functions.priceSummary(FFAppState().myCartSummary.toList()),
-                                                                            0.0,
-                                                                          ) *
-                                                                          0.0825)) +
+                                                                      double>(
+                                                                    functions.priceSummary(FFAppState()
+                                                                        .myCartSummary
+                                                                        .toList()),
+                                                                    0.0,
+                                                                  )) +
                                                                   4.00,
                                                               formatType:
                                                                   FormatType

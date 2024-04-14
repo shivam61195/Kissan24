@@ -20,3 +20,32 @@ double? priceSummary(List<double>? prices) {
   }
   return prices.reduce((value, element) => value + element);
 }
+
+dynamic createjson(
+  String merchantId,
+  String merchantTransactionId,
+  String merchantUserId,
+  double amount,
+  String redirectUrl,
+  String redirectMode,
+  String callbackUrl,
+  String mobileNumber,
+) {
+  return {
+    "merchantId": merchantId,
+    "merchantTransactionId": merchantTransactionId,
+    "merchantUserId": merchantUserId,
+    "amount": amount,
+    "redirectUrl": redirectUrl,
+    "redirectMode": redirectMode,
+    "callbackUrl": callbackUrl,
+    "mobileNumber": mobileNumber,
+    "paymentInstrument": {"type": "PAY_PAGE"}
+  };
+}
+
+String? coverjsontobase64(dynamic json) {
+  String jsonString = jsonEncode(json);
+  String base64String = base64.encode(utf8.encode(jsonString));
+  return base64String;
+}

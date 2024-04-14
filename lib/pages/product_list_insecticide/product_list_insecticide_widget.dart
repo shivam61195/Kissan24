@@ -8,19 +8,21 @@ import '/pages/cart_order_history/empty_state_dynamic/empty_state_dynamic_widget
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'cart_product_list_model.dart';
-export 'cart_product_list_model.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'product_list_insecticide_model.dart';
+export 'product_list_insecticide_model.dart';
 
-class CartProductListWidget extends StatefulWidget {
-  const CartProductListWidget({super.key});
+class ProductListInsecticideWidget extends StatefulWidget {
+  const ProductListInsecticideWidget({super.key});
 
   @override
-  State<CartProductListWidget> createState() => _CartProductListWidgetState();
+  State<ProductListInsecticideWidget> createState() =>
+      _ProductListInsecticideWidgetState();
 }
 
-class _CartProductListWidgetState extends State<CartProductListWidget>
-    with TickerProviderStateMixin {
-  late CartProductListModel _model;
+class _ProductListInsecticideWidgetState
+    extends State<ProductListInsecticideWidget> with TickerProviderStateMixin {
+  late ProductListInsecticideModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -87,7 +89,7 @@ class _CartProductListWidgetState extends State<CartProductListWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CartProductListModel());
+    _model = createModel(context, () => ProductListInsecticideModel());
 
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -95,6 +97,8 @@ class _CartProductListWidgetState extends State<CartProductListWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -116,12 +120,18 @@ class _CartProductListWidgetState extends State<CartProductListWidget>
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
-          title: Text(
-            'Product List',
+          title: GradientText(
+            'Insecticides',
             style: FlutterFlowTheme.of(context).displaySmall.override(
                   fontFamily: 'Urbanist',
                   letterSpacing: 0.0,
                 ),
+            colors: [
+              FlutterFlowTheme.of(context).primary,
+              FlutterFlowTheme.of(context).secondary
+            ],
+            gradientDirection: GradientDirection.ltr,
+            gradientType: GradientType.linear,
           ),
           actions: [
             InkWell(
@@ -200,7 +210,12 @@ class _CartProductListWidgetState extends State<CartProductListWidget>
                     child: StreamBuilder<List<ProductsRecord>>(
                       stream: queryProductsRecord(
                         queryBuilder: (productsRecord) => productsRecord
-                            .orderBy('createdTime', descending: true),
+                            .where(
+                              'category',
+                              isEqualTo:
+                                  'Insecticide' != '' ? 'Insecticide' : null,
+                            )
+                            .orderBy('salePrice'),
                       ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
@@ -430,7 +445,7 @@ class _CartProductListWidgetState extends State<CartProductListWidget>
                                                                   String>(
                                                                 formatNumber(
                                                                   listBgVarItem
-                                                                      .price,
+                                                                      .salePrice,
                                                                   formatType:
                                                                       FormatType
                                                                           .decimal,
@@ -645,7 +660,7 @@ class _CartProductListWidgetState extends State<CartProductListWidget>
                                                               String>(
                                                             formatNumber(
                                                               productsGridItem
-                                                                  .price,
+                                                                  .salePrice,
                                                               formatType:
                                                                   FormatType
                                                                       .decimal,

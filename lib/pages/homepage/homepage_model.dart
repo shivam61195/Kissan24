@@ -7,6 +7,8 @@ class HomepageModel extends FlutterFlowModel<HomepageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Model for bottomnavigationcomponents component.
+  late BottomnavigationcomponentsModel bottomnavigationcomponentsModel;
   // State field(s) for PageView widget.
   PageController? pageViewController;
 
@@ -15,8 +17,6 @@ class HomepageModel extends FlutterFlowModel<HomepageWidget> {
           pageViewController!.page != null
       ? pageViewController!.page!.round()
       : 0;
-  // Model for bottomnavigationcomponents component.
-  late BottomnavigationcomponentsModel bottomnavigationcomponentsModel;
 
   @override
   void initState(BuildContext context) {

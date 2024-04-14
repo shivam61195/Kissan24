@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/components/bottomnavigationcomponents/bottomnavigationcomponents_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'search_page_widget.dart' show SearchPageWidget;
@@ -11,6 +12,7 @@ class SearchPageModel extends FlutterFlowModel<SearchPageWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  List<ProductsRecord> simpleSearchResults = [];
   // Model for bottomnavigationcomponents component.
   late BottomnavigationcomponentsModel bottomnavigationcomponentsModel;
 

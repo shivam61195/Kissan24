@@ -117,6 +117,8 @@ class _BottomnavigationcomponentsWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => BottomnavigationcomponentsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/cart_order_history/empty_state_dynamic/empty_state_dynamic_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'cart_order_history_model.dart';
 export 'cart_order_history_model.dart';
 
@@ -24,6 +25,8 @@ class _CartOrderHistoryWidgetState extends State<CartOrderHistoryWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CartOrderHistoryModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -67,7 +70,7 @@ class _CartOrderHistoryWidgetState extends State<CartOrderHistoryWidget> {
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     24.0, 20.0, 0.0, 0.0),
-                                child: Text(
+                                child: GradientText(
                                   'Recent Orders',
                                   style: FlutterFlowTheme.of(context)
                                       .headlineMedium
@@ -75,6 +78,12 @@ class _CartOrderHistoryWidgetState extends State<CartOrderHistoryWidget> {
                                         fontFamily: 'Urbanist',
                                         letterSpacing: 0.0,
                                       ),
+                                  colors: [
+                                    FlutterFlowTheme.of(context).primary,
+                                    FlutterFlowTheme.of(context).secondary
+                                  ],
+                                  gradientDirection: GradientDirection.ltr,
+                                  gradientType: GradientType.linear,
                                 ),
                               ),
                               Padding(
@@ -249,7 +258,7 @@ class _CartOrderHistoryWidgetState extends State<CartOrderHistoryWidget> {
                                           buttonText: 'Show Now',
                                           buttonAction: () async {
                                             context
-                                                .pushNamed('cart_ProductList');
+                                                .pushNamed('ProductList_Seeds');
                                           },
                                         ),
                                       ),
@@ -569,7 +578,7 @@ class _CartOrderHistoryWidgetState extends State<CartOrderHistoryWidget> {
                                                             decimalType:
                                                                 DecimalType
                                                                     .automatic,
-                                                            currency: '\$',
+                                                            currency: '₹',
                                                           ),
                                                           textAlign:
                                                               TextAlign.end,

@@ -26,6 +26,8 @@ class _CartBadgeWidgetState extends State<CartBadgeWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CartBadgeModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
