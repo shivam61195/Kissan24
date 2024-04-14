@@ -60,6 +60,16 @@ class OrdersRecord extends FirestoreRecord {
   List<DocumentReference> get users => _users ?? const [];
   bool hasUsers() => _users != null;
 
+  // "username" field.
+  String? _username;
+  String get username => _username ?? '';
+  bool hasUsername() => _username != null;
+
+  // "userphone" field.
+  String? _userphone;
+  String get userphone => _userphone ?? '';
+  bool hasUserphone() => _userphone != null;
+
   void _initializeFields() {
     _products = getDataList(snapshotData['products']);
     _totalPrice = castToType<double>(snapshotData['totalPrice']);
@@ -70,6 +80,8 @@ class OrdersRecord extends FirestoreRecord {
     _orderNumber = castToType<int>(snapshotData['orderNumber']);
     _address = AddressStruct.maybeFromMap(snapshotData['address']);
     _users = getDataList(snapshotData['users']);
+    _username = snapshotData['username'] as String?;
+    _userphone = snapshotData['userphone'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -113,6 +125,8 @@ Map<String, dynamic> createOrdersRecordData({
   DocumentReference? owner,
   int? orderNumber,
   AddressStruct? address,
+  String? username,
+  String? userphone,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -123,6 +137,8 @@ Map<String, dynamic> createOrdersRecordData({
       'owner': owner,
       'orderNumber': orderNumber,
       'address': AddressStruct().toMap(),
+      'username': username,
+      'userphone': userphone,
     }.withoutNulls,
   );
 
@@ -146,7 +162,9 @@ class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
         e1?.owner == e2?.owner &&
         e1?.orderNumber == e2?.orderNumber &&
         e1?.address == e2?.address &&
-        listEquality.equals(e1?.users, e2?.users);
+        listEquality.equals(e1?.users, e2?.users) &&
+        e1?.username == e2?.username &&
+        e1?.userphone == e2?.userphone;
   }
 
   @override
@@ -159,7 +177,9 @@ class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
         e?.owner,
         e?.orderNumber,
         e?.address,
-        e?.users
+        e?.users,
+        e?.username,
+        e?.userphone
       ]);
 
   @override

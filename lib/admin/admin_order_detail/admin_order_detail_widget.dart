@@ -745,19 +745,23 @@ class _AdminOrderDetailWidgetState extends State<AdminOrderDetailWidget> {
                                                                               mainAxisAlignment: MainAxisAlignment.center,
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
-                                                                                AuthUserStreamWidget(
-                                                                                  builder: (context) => Text(
-                                                                                    currentUserDisplayName,
-                                                                                    style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                          fontFamily: 'Plus Jakarta Sans',
-                                                                                          letterSpacing: 0.0,
-                                                                                        ),
+                                                                                Text(
+                                                                                  valueOrDefault<String>(
+                                                                                    widget.orderRef?.username,
+                                                                                    'null',
                                                                                   ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        letterSpacing: 0.0,
+                                                                                      ),
                                                                                 ),
                                                                                 Padding(
                                                                                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                   child: Text(
-                                                                                    currentUserEmail,
+                                                                                    valueOrDefault<String>(
+                                                                                      widget.orderRef?.userphone,
+                                                                                      'null',
+                                                                                    ),
                                                                                     style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                           fontFamily: 'Plus Jakarta Sans',
                                                                                           color: FlutterFlowTheme.of(context).primary,

@@ -1940,6 +1940,8 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                               clearUnsetFields: false,
                                               create: true,
                                             ),
+                                            username: currentUserDisplayName,
+                                            userphone: currentPhoneNumber,
                                           ),
                                           ...mapToFirestore(
                                             {
@@ -1986,6 +1988,8 @@ class _CartCheckoutWidgetState extends State<CartCheckoutWidget>
                                               clearUnsetFields: false,
                                               create: true,
                                             ),
+                                            username: currentUserDisplayName,
+                                            userphone: currentPhoneNumber,
                                           ),
                                           ...mapToFirestore(
                                             {
